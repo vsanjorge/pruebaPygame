@@ -8,9 +8,10 @@ screen = pygame.display.set_mode(size)
 # Cambiamos el título de la ventana
 pygame.display.set_caption("Juego BALL")
 # Inicializamos variables
-width, height = 800, 600
-speed = [1, 1]
-white = 255, 255, 255
+width, height = 800, 600 # Bordes
+speed = [1, 1] # Velocidad de la bola
+white = 255, 255, 255 # Color del fondo
+font = pygame.font.SysFont("monospace", 16) # Fuente para la puntuación
 # Creamos un objeto imagen y obtenemos su rectángulo
 ball = pygame.image.load("ball.png")
 ballrect = ball.get_rect()
@@ -19,6 +20,8 @@ bate = pygame.image.load("bate.png")
 baterect = bate.get_rect()
 # Ponemos el bate en el centro de la pantalla
 baterect.move_ip(400, 260)
+# Inicializamos una variable para la puntuación
+score = 0 
 # Comenzamos el bucle del juego
 run = True
 while run:
@@ -42,6 +45,8 @@ while run:
   # Comprobamos si la pelota colisiona con el bate
   if baterect.colliderect(ballrect):
     speed[0] = -speed[0]
+    score += 1
+    pygame.display.flip()
   # Movemos la pelota
   ballrect = ballrect.move(speed)
   # Comprobamos si la pelota llega a los límites de la ventana
@@ -49,10 +54,12 @@ while run:
     speed[0] = -speed[0]
   if ballrect.top < 0 or ballrect.bottom > height:
     speed[1] = -speed[1]
-  # Pintamos el fondo blanco, dibujamos la pelota, el bate y actualizamos la pantalla
+  # Pintamos el fondo blanco, dibujamos la pelota, el bate, la puntuación y actualizamos la pantalla
   screen.fill(white)
   screen.blit(ball, ballrect)
   screen.blit(bate, baterect)
+  scoreText = font.render("Score: {0}".format(score), 1, (0,0,0))
+  screen.blit(scoreText, (5, 10))
   pygame.display.flip()
 # Salimos de pygame
 pygame.quit()

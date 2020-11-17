@@ -31,9 +31,13 @@ while run:
       run = False
   # Comprobamos si se ha pulsado alguna tecla
   keys = pygame.key.get_pressed()
-  if keys[pygame.K_UP]:
+  if keys[pygame.K_UP] and baterect.top <= 0: # Detectamos colisión del bate con el borde superior
+    baterect = baterect.move(0, 0)
+  elif keys[pygame.K_UP]:
     baterect = baterect.move(0, -1)
-  if keys[pygame.K_DOWN]:
+  if keys[pygame.K_DOWN] and baterect.bottom >= height: # Detectamos colisión del bate con el borde inferior
+    baterect = baterect.move(0, 0)
+  elif keys[pygame.K_DOWN]:
     baterect = baterect.move(0, 1)
   # Comprobamos si la pelota colisiona con el bate
   if baterect.colliderect(ballrect):

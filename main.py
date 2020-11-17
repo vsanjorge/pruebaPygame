@@ -1,4 +1,5 @@
 # Proyecto de prueba en Pygame, en este caso siguiendo el tutorial de José Domingo Muñoz en el canal de YouTube de OpenWebinars: https://youtu.be/2Ilq_J_R9qU
+# Mejoras añadidas sobre el proyecto inicial: colisión del bate con los bordes, puntuación
 import pygame
 # Inicializamos pygame
 pygame.init()

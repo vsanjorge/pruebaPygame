@@ -1,5 +1,5 @@
 # Proyecto de prueba en Pygame, en este caso siguiendo el tutorial de José Domingo Muñoz en el canal de YouTube de OpenWebinars: https://youtu.be/2Ilq_J_R9qU
-import pygame
+import sys, pygame
 # Inicializamos pygame
 pygame.init()
 # Mostramos una ventana de 800x600
@@ -45,9 +45,10 @@ while run:
     speed[0] = -speed[0]
   if ballrect.top < 0 or ballrect.bottom > height:
     speed[1] = -speed[1]
-  # Pintamos el fondo blanco, dibujamos la pelota y actualizamos la pantalla
+  # Pintamos el fondo blanco, dibujamos la pelota, el bate y actualizamos la pantalla
   screen.fill(white)
   screen.blit(ball, ballrect)
+  screen.blit(bate, baterect)
   pygame.display.flip()
 # Salimos de pygame
 pygame.quit()

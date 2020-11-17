@@ -1,5 +1,5 @@
 # Proyecto de prueba en Pygame, en este caso siguiendo el tutorial de José Domingo Muñoz en el canal de YouTube de OpenWebinars: https://youtu.be/2Ilq_J_R9qU
-import sys, pygame
+import pygame
 # Inicializamos pygame
 pygame.init()
 # Mostramos una ventana de 800x600
